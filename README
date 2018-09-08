@@ -1,0 +1,94 @@
+
+# Programming Language
+JAVA
+
+# Compiler Version
+java version "1.8.0_144"
+
+# Steps to run
+1) Open command prompt and browse to folder containing the files
+2) Add the network file and queries file to the same folder
+3) Use command "javac Main.java" to compile the program
+4) Use command "java Main <network file name> <queries file name> <output file name.txt>" to run the program
+5) If run correctly the output of the queries execution will be stored in output file mentioned in above command
+6) Please give the output file name with extension ".txt" to make it as text file.
+7) If insufficient arguments are given, the program will terminate with error stating insufficient arguments.
+8) Any quit command in the queries file will cause the program to write the output till that point to the output file and then quit
+
+
+# Program Design
+
+- The program begins with execution point in Main.java which checks if all inputs are provided.
+- If yes, CreateNetwork.java class' createNetwork() method is called to create a graph given in network file.
+- After creating the graph, queries file is read one by one line at a time from Main.java class
+- It is interpreted and appropriate calls are made to modify the graph
+- All the output generated during processing is stored in the output file given in command line
+- The program is continued to run till the queries file are processed or it encounters the quit command in the queries
+ 
+# Classes
+
+1) Main.java
+- Acts as entry point to program and checks if sufficient arguments are given to run the program.
+- If given correctly, reads the network file, and creates a graph.
+- Reads the queries file line by line and interprets the command and calls the appropriate command by using switch case.
+
+2) CreateNetwork.java
+- This class contains method "createNetwork()" which takes the network file as input from command line and creates initial graph.
+
+3) Vertex.java
+- POJO class for storing all the details related to a vertex
+- Consists of constructor that returns an object of the Vertex class and also contains the getters and setters for the parameters.
+- Contains following attributes and their purpose:
+name: Stores the name of the vertex
+vertexStatus: Denotes if the vertex is UP or DOWN status
+sourceDistance: Denotes the distance of a vertex from a particular source 
+discovered: A boolean variable that stores if variable is visited or not. Is FALSE by default.
+previousVertex: A variable of Vertex type that stores the previous vertex of current vertex in shortest path
+edgesMap: Hashmap that stores the status of edges for all the neighbors of a vertex. TRUE if an edge exists and is UP, FALSE if no edge exists or exists but is DOWN.
+neighbors: Stores the list of neighbors for a vertex
+edgeStatusFlag: Boolean variable to denote edge status
+
+4) Graph.java
+- Creates and defines all the methods related to any alterations and operations performed on the graph.
+Following are the methods and their function in Graph.java:
+- addEdge(): Takes source and destination vertices along with edge weight as parameters and adds an edge between those vertices in the graph
+- removeEdge(): Takes source and destination vertices as parameters and removes the edge between those vertices in the graph
+- edgeDown(): Takes source and destination as parameters and marks edge between them with DOWN status
+- edgeUp(): Takes source and destination as parameters and marks edge between them with UP status
+- addVertex(): Adds a vertex to the graph 
+- vertexUp(): Takes vertex name as input and updates the vertex object of that vertex with vertexStatus as TRUE to make the vertex UP
+- vertexDown(): Takes vertex name as input and updates the vertex object of that vertex with vertexStatus as FALS to make the vertex DOWN
+- getVertex(): Returns the vertex object of the vertex name passed to it as a string. If vertex is absent, adds it to graph and returns the new object.
+- printReachableVertices(): Prints the reachable vertices from all the vertices in the current graph
+- findShortestPath(): Takes source and destination vertices as the input parameters and returns the shortest path using Dijkstra's algorithm
+- hSort(): Method that performs heap sort on the heap
+- buildMinBinaryHeap(): Builds a minimum binary heap from the given input array
+- minHeapify(): Performs minheapify operation on the heap so that it satisfies the heap properties
+- alphabeticalSort(): Sorts the vertices in alphabetical order for the purpose of printing
+- printGraph(): Print the current state of the graph
+- printShortestPath(): Prints the shortest path of a particular node in addition to all nodes in that path
+- ouputWrite(): Writes the output of all queries to the file passed as the parameter
+
+# Data Structures used:
+- Hashmap is used for storing the status of edges of a vertex to its neighbors
+- Array is used to store the vertices as heap and perform the heap operations on the data
+- LinkedList is used to perform operations like finding shortest path, printing graph etc.
+
+ 	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
